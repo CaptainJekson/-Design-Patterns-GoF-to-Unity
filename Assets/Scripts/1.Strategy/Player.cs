@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private Button _moveRandomToPointButton;
     [SerializeField] private Button _moveForwardButton;
+    [SerializeField] private Button _mouseForwardButton;
 
     private IMovable _movableType;          
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
 
         _moveRandomToPointButton.onClick.AddListener(OnMoveRandomToPointButtonClick);
         _moveForwardButton.onClick.AddListener(OnMoveForwardButtonClick);
+        _mouseForwardButton.onClick.AddListener(OnMoveMouseForwardButtonClick);
     }
 
     private void Update()
@@ -35,5 +37,10 @@ public class Player : MonoBehaviour
     private void OnMoveForwardButtonClick()
     {
         _movableType = GetComponent<MoverForward>();
+    }
+
+    private void OnMoveMouseForwardButtonClick()
+    {
+        _movableType = GetComponent<MoverToMouse>();
     }
 }
